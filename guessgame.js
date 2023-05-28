@@ -8,60 +8,69 @@ const sc = document.querySelector("#score");
 const hSc = document.querySelector("#hScore");
 let randNumber = Math.floor(Math.random() * 18 + 1);
 let counter = 0;
-let higScore;console.log(randNumber)
+let highScore = 0;
 const guessBtn = function () {
   const inpBoxValue = Number(document.querySelector("#inpBox").value);
   if (inpBoxValue === 0) {
-    gCt.innerHTML = "You Enter Nothing";
-    gCtImg.src = "./icons/happy.png";
+    gCSet("You Enter Nothing", "happy.png");
   } else if (inpBoxValue > 20 || inpBoxValue <= 0) {
-    gCt.innerHTML = "Follow the game rule";
-    gCtImg.src = "./icons/happy.png";
+    gCSet("Follow the game rule", "happy.png");
   } else if (inpBoxValue > randNumber) {
-    gCt.innerHTML = "Guess is too high";
-    gCtImg.src = "./icons/fire.png";
+    gCSet("Guess is too high", "fire.png");
     counter++;
   } else if (inpBoxValue < randNumber) {
-    gCt.innerHTML = "Guess is too low";
-    gCtImg.src = "./icons/ice-cubes.png";
+    gCSet("Guess is too low", "ice-cubes.png");
     counter++;
   } else if (inpBoxValue === randNumber) {
-    gCt.innerHTML = "Your guess is correct";
-    gCtImg.src = "./icons/party.png";
-    btn.classList.remove("border-red-500");
-    inpBox.classList.remove("border-red-500");
-    btn.classList.add("border-green-500");
-    inpBox.classList.add("border-green-500");
-    gBox.classList.remove("bg-red-500");
-    gBox.classList.add("bg-green-500");
-    btn.innerHTML = "Play Again";
-    hSc.innerHTML = higScore;
-    btn.addEventListener("click", reset);
+    gCSet("Your guess is correct", "party.png");
+    correctGuess();
+    highScore = sc.innerHTML;
+    win();
+    reset();
   }
   if (Number(counter) === 20) {
-    gCt.innerHTML = "Game Over";
-    gCtImg.src = "./icons/sading.png";
-    gBox.classList.remove("bg-red-500");
-    inpBox.classList.add("bg-red-800");
-    btn.innerHTML = "Play Again";
-    btn.addEventListener("click", reset);
+    gCSet("Game Over", "sading.png");
+    gameOver();
+    reset();
   }
   if (inpBoxValue === randNumber && counter === 0) {
-    gCt.innerHTML = "IQ is 420!!!!!";
-    gCtImg.src = "./icons/shocked.png";
-    btn.classList.remove("border-red-500");
-    inpBox.classList.remove("border-red-500");
-    btn.classList.add("border-green-500");
-    inpBox.classList.add("border-green-500");
-    gBox.classList.remove("bg-red-500");
-    gBox.classList.add("bg-green-500");
-    btn.innerHTML = "Play Again";
-    hSc.innerHTML = Number(score.innerHTML);
-    btn.addEventListener("click", reset);
+    gCSet("IQ is 420!!!!!","shocked.png");
+    correctGuess();
+    highScore = sc.innerHTML;
+    win()
+    reset();
   }
-  higScore = Number((score.innerHTML = 20 - counter));
+  Number(sc.innerHTML = 20 - counter);
+  if (counter === 20) {
+    counter = 0
+  }
 };
 btn.addEventListener("click", guessBtn);
+
+// -------------functions-------------------
 function reset() {
-  window.location.reload();
+  btn.addEventListener("click", () => window.location.reload());
 }
+
+function gCSet(texts, srcs) {
+  gCt.innerHTML = texts;
+  gCtImg.src = `./icons/${srcs}`;
+}
+function correctGuess() {
+  btn.classList.remove("border-red-500");
+  btn.classList.add("border-green-500");
+  inpBox.classList.remove("border-red-500");
+  inpBox.classList.add("border-green-500");
+  gBox.classList.remove("bg-red-500");
+  gBox.classList.add("bg-green-500");
+}
+function win() {
+  btn.innerHTML = "Play Again";
+  localStorage.setItem('highScore', highScore);
+}
+function gameOver () {
+  gBox.classList.remove("bg-red-500");
+  inpBox.classList.add("bg-red-800");
+  btn.innerHTML = "Play Again";
+}
+hSc.innerHTML = localStorage.getItem('highScore');
