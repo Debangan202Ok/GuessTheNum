@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="input.css"> -->
+    <title>GuessGame</title>
+    <style>
+      @font-face {
+        font-family: "pixelFont";
+        src: url("./04b_30/04B_30__.TTF");
+      }
+      body {
+        font-family: "pixelFont", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="w-screen h-screen flex flex-col">
+      <nav class="w-screen bg-black text-white text-center">
+        <h1 class="text-3xl py-3">GUESS THE NUMBER</h1>
+      </nav>
+      <div class="bg-black border-b-8 border-double text-white text-right">
+        <p class="p-2 text-sm md:text-xl">Guess between 1 to 20</p>
+      </div>
+      <!-- ------------------------section of game----------------------- -->
+      <section
+        class="text-white p-2 bg-[#121212] h-fit md:h-[50vh] flex flex-wrap-reverse items-center md:justify-evenly flex-col md:flex-row"
+      >
+        <div
+          id="GuessClose"
+          class="flex text-sm md:text-md order-3 md:order-1 w-screen md:w-[30%] justify-center items-center "
+        >
+          <p id="guessCloseText">When you start guessing?</p>
+          <img src="./icons/happy.png" alt="emoji" id="gCI" class="w-[20px] ml-2 md:w-[30px] h-fit">
+        </div>
+        <div
+          id="GuessBox"
+          class="flex order-2 rounded-lg shadow-sm my-3 md:order-2 w-[200px] h-[200px] justify-center bg-red-500 items-center"
+        >
+          <h1 id="gBoard" class="text-9xl">?</h1>
+        </div>
+        <div
+          id="leaderBoard"
+          class="flex order-1 break-normal md:order-3 flex-col text-sm md:text-md justify-center w-screen md:w-[30%] px-2 text-right md:text-left "
+        >
+          <p>Score 💯 : <span id="score">20</span></p>
+          <p>Highest Score 🏆 : <span id="hScore">00</span></p>
+        </div>
+      </section>
+      <!-- -----------------input section---------------- -->
+      <section
+        class="bg-[#121212] w-screen flex items-center justify-center  h-[20vh]"
+      >
+        <div>
+          <input
+            id="inpBox"
+            type="number"
+            class="h-[50px] w-[100px] text-center p-5 border-8 border-double rounded-lg border-red-500"
+          />
+          <button id="btn" class="text-white border-8 p-3 shadow-xl border-double rounded-xl border-red-500">Guess</button>
+        </div>
+      </section>
+      <!-- ------------------------footer--------------->
+      <footer class="flex w-screen flex-1 border-t-8 border-double text-white bg-black items-center justify-center">
+        <div class="w-fit">
+          <p>&copy; Created by paul</p>
+        </div>
+      </footer>
+    </div>
+    <script src="guessgame.js"></script>
+  </body>
+</html>
