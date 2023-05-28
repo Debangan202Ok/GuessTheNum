@@ -2,6 +2,7 @@
 -----------------------------------------------------------------------------------
 this game is made in 4 hours of coding. here i use basic js.basically here use control flow statemwnts nor too many functions so if any kind of issue related this project please let me know.
 howerver this is very beginning level project
+____________________________________________________________________________________________________________________________________
 @if you are already familier with functions then you can modify this code and make it more functionlity depended that may be help "do not repeat" youreself
 -------------------------------------------------------------------------------------
 here i use :
