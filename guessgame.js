@@ -56,7 +56,7 @@ const guessBtn = function () {
     gBox.classList.remove("bg-red-500");
     gBox.classList.add("bg-green-500");
     btn.innerHTML = "Play Again";
-    hSc.innerHTML = higScore;
+    hSc.innerHTML = score.innerHTML;
     btn.addEventListener("click", reset);
   }
   higScore = Number((score.innerHTML = 20 - counter));
