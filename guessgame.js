@@ -9,7 +9,6 @@ const hSc = document.querySelector("#hScore");
 let randNumber = Math.floor(Math.random() * 18 + 1);
 let counter = 0;
 let higScore;
-console.log(randNumber)
 const guessBtn = function () {
   const inpBoxValue = Number(document.querySelector("#inpBox").value);
   if (inpBoxValue === 0) {
