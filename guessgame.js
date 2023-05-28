@@ -9,6 +9,7 @@ const hSc = document.querySelector("#hScore");
 let randNumber = Math.floor(Math.random() * 18 + 1);
 let counter = 0;
 let higScore;
+console.log(randNumber)
 const guessBtn = function () {
   const inpBoxValue = Number(document.querySelector("#inpBox").value);
   if (inpBoxValue === 0) {
@@ -56,7 +57,7 @@ const guessBtn = function () {
     gBox.classList.remove("bg-red-500");
     gBox.classList.add("bg-green-500");
     btn.innerHTML = "Play Again";
-    hSc.innerHTML = score.innerHTML;
+    hSc.innerHTML = higScore;
     btn.addEventListener("click", reset);
   }
   higScore = Number((score.innerHTML = 20 - counter));
