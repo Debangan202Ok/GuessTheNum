@@ -9,6 +9,7 @@ const hSc = document.querySelector("#hScore");
 let randNumber = Math.floor(Math.random() * 18 + 1);
 let counter = 0;
 let highScore = 0;
+hSc.innerHTML = localStorage.getItem('highScore');
 const guessBtn = function () {
   const inpBoxValue = Number(document.querySelector("#inpBox").value);
   if (inpBoxValue === 0) {
@@ -24,7 +25,6 @@ const guessBtn = function () {
   } else if (inpBoxValue === randNumber) {
     gCSet("Your guess is correct", "party.png");
     correctGuess();
-    highScore = sc.innerHTML;
     win();
     reset();
   }
@@ -36,7 +36,7 @@ const guessBtn = function () {
   if (inpBoxValue === randNumber && counter === 0) {
     gCSet("IQ is 420!!!!!","shocked.png");
     correctGuess();
-    highScore = sc.innerHTML;
+    // highScore = sc.innerHTML;
     win()
     reset();
   }
@@ -66,11 +66,12 @@ function correctGuess() {
 }
 function win() {
   btn.innerHTML = "Play Again";
+  highScore = sc.innerHTML;
   localStorage.setItem('highScore', highScore);
 }
 function gameOver () {
   gBox.classList.remove("bg-red-500");
   inpBox.classList.add("bg-red-800");
   btn.innerHTML = "Play Again";
+  localStorage.setItem('highScore', highScore);
 }
-hSc.innerHTML = localStorage.getItem('highScore');
