@@ -66,11 +66,13 @@ function correctGuess() {
   gBox.classList.add("bg-green-500");
 }
 function win() {
+  gameBoard.innerHTML = randNumber;
   btn.innerHTML = "Play Again";
   highScore = sc.innerHTML;
   localStorage.setItem('highScore', highScore);
 }
 function gameOver () {
+  gameBoard.innerHTML = randNumber;
   gBox.classList.remove("bg-red-500");
   inpBox.classList.add("bg-red-800");
   btn.innerHTML = "Play Again";
