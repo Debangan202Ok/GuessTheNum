@@ -11,7 +11,7 @@ let counter = 0;
 let highScore = 0;
 hSc.innerHTML = localStorage.getItem('highScore');
 const guessBtn = function () {
-  const inpBoxValue = Number(document.querySelector("#inpBox").value);
+  let inpBoxValue = Number(document.querySelector("#inpBox").value);
   if (inpBoxValue === 0) {
     gCSet("You Enter Nothing", "happy.png");
   } else if (inpBoxValue > 20 || inpBoxValue <= 0) {
@@ -50,6 +50,7 @@ btn.addEventListener("click", guessBtn);
 // -------------functions-------------------
 function reset() {
   btn.addEventListener("click", () => window.location.reload());
+  
 }
 
 function gCSet(texts, srcs) {
